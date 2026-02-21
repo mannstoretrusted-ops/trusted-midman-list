@@ -209,8 +209,8 @@ function toggleDark(){
   }
 }
 
-// visitor counter using CountAPI
-fetch('https://api.countapi.xyz/hit/midman-trusted-website/visits')
+// visitor counter using your working API
+fetch('https://api.counterapi.dev/v2/mannstore-mys-team-3003/visitorcounter')
   .then(res => res.json())
   .then(res => {
     document.getElementById('count').innerText = res.value;
