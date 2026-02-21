@@ -17,6 +17,7 @@
   --btn-apaitu-bg: #ffc107;
   --btn-apaitu-color: #111;
   --card-bg: white;
+  --card-text-color: #222;
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,7 @@
   --btn-apaitu-bg: #ffb300;
   --btn-apaitu-color: #111;
   --card-bg: #222;
+  --card-text-color: #fff;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
@@ -59,12 +61,11 @@ header p { font-size:1.3rem; max-width:600px; margin-bottom:40px; line-height:1.
 
 #midman-list { padding:50px 20px; max-width:800px; margin:0 auto; }
 #midman-list h2 { text-align:center; margin-bottom:20px; font-size:2rem; color:#4caf50; }
-#midman-list p.info { text-align:center; margin-bottom:30px; font-size:1rem; color:#555; }
 
-.midman-card { display:flex; justify-content:space-between; align-items:center; background: var(--card-bg); padding:15px 20px; margin-bottom:15px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+.midman-card { display:flex; justify-content:space-between; align-items:center; background: var(--card-bg); padding:15px 20px; margin-bottom:15px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:0.3s; }
 .midman-info { display:flex; flex-direction:column; }
 .midman-info span { margin-bottom:5px; font-weight:bold; font-size:1.1rem; }
-.midman-info small { font-size:0.9rem; color:#555; }
+.midman-info small { font-size:0.9rem; color:var(--card-text-color); }
 
 .message-btn { padding:10px 20px; background:#25d366; color:white; text-decoration:none; border-radius:8px; font-weight:bold; }
 
@@ -86,24 +87,18 @@ header p { font-size:1.3rem; max-width:600px; margin-bottom:40px; line-height:1.
 .info-section ol { margin-left:20px; margin-top:15px; }
 .warning { margin-top:20px; padding:15px; background:#fff3cd; border-left:5px solid #ffc107; font-weight:bold; transition:0.3s; }
 
+#visitor-counter { text-align:center; margin:30px 0; padding:15px; background:#4caf50; color:white; border-radius:10px; font-weight:bold; font-size:1.2rem; }
+
 .disclaimer { padding:30px 20px; background:#fff3cd; color:#856404; text-align:center; font-weight:bold; font-size:1.1rem; transition:0.3s; }
 
 .whatsapp-float { position:fixed; bottom:20px; right:20px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:2rem; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:100; }
 
 .dark-toggle { position:fixed; top:20px; right:20px; background:#333; color:white; padding:10px 15px; border-radius:8px; cursor:pointer; z-index:101; font-weight:bold; }
 
-[data-theme="dark"] .rules-box {
-  background:#333;  /* dark gray */
-  color:#f9f9f9;
-  border-left:5px solid #4caf50;
-}
-
+[data-theme="dark"] .rules-box { background:#333; color:#f9f9f9; border-left:5px solid #4caf50; }
 [data-theme="dark"] .warning, 
-[data-theme="dark"] .disclaimer {
-  background:#555c26; /* grayish yellow */
-  color:#f9f9f9;
-  border-left:5px solid #ffb300;
-}
+[data-theme="dark"] .disclaimer { background:#555c26; color:#f9f9f9; border-left:5px solid #ffb300; }
+
 </style>
 </head>
 
@@ -126,8 +121,7 @@ header p { font-size:1.3rem; max-width:600px; margin-bottom:40px; line-height:1.
 </header>
 
 <section id="midman-list">
-  <h2>Senarai Midman Trusted</h2>
-  <p class="info">Nak jadi midman trusted Malaysia? PM owner, hantar feedback (PERLU 200+ FEEDBACK MID)</p>
+  <h2>Senarai Midman Trusted Malaysia</h2>
 
   <div class="midman-card">
     <div class="midman-info">
@@ -188,6 +182,9 @@ header p { font-size:1.3rem; max-width:600px; margin-bottom:40px; line-height:1.
   <p class="warning">⚠️ Gunakan midman atas risiko sendiri. Sentiasa semak maklum balas dan bukti sebelum transaksi.</p>
 </section>
 
+<!-- visitor counter -->
+<div id="visitor-counter">Jumlah Pelawat Website: <span id="count">...</span></div>
+
 <div class="disclaimer">⚠️ Semua midman disahkan oleh komuniti. Gunakan atas risiko sendiri.</div>
 
 <a href="https://wa.me/60142815551" target="_blank" class="whatsapp-float" title="Soalan? Hantar nombor anda di sini!">
@@ -211,6 +208,16 @@ function toggleDark(){
     body.setAttribute('data-theme','dark');
   }
 }
+
+// visitor counter using CountAPI
+fetch('https://api.countapi.xyz/hit/midman-trusted-website/visits')
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('count').innerText = res.value;
+  })
+  .catch(err => {
+    document.getElementById('count').innerText = "Error";
+  });
 </script>
 
 </body>
