@@ -1,224 +1,234 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Midman Trusted Malaysia</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
 :root {
-  --bg-color: #f9f9f9;
-  --text-color: #222;
-  --header-bg: linear-gradient(to right, #4caf50, #81c784);
-  --btn-bg: white;
-  --btn-color: #4caf50;
-  --btn-apaitu-bg: #ffc107;
-  --btn-apaitu-color: #111;
-  --card-bg: white;
-  --card-text-color: #222;
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #f2f2f2;
+  --accent: #25d366;
+  --warning: #ffe066;
+  --warning-text: #333;
+  --header-gradient: linear-gradient(160deg, #4caf50, #ffffff);
 }
 
-[data-theme="dark"] {
-  --bg-color: #111;
-  --text-color: #f9f9f9;
-  --header-bg: linear-gradient(to right, #222, #444);
-  --btn-bg: #333;
-  --btn-color: #fff;
-  --btn-apaitu-bg: #ffb300;
-  --btn-apaitu-color: #111;
-  --card-bg: #222;
-  --card-text-color: #fff;
+body.dark {
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --card: #1e1e1e;
+  --warning: #3a3a1a;
+  --warning-text: #fff6b0;
+  --header-gradient: linear-gradient(160deg, #4caf50, #111111);
 }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body { scroll-behavior: smooth; background: var(--bg-color); color: var(--text-color); transition:0.3s; }
+* { box-sizing: border-box; font-family: Arial, sans-serif; margin:0; padding:0; }
+body { background: var(--bg); color: var(--text); transition:0.3s ease; }
 
 header {
-  height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: var(--header-bg);
-  color: white;
-  padding: 0 20px;
+  padding: 20px;
   position: relative;
   overflow: hidden;
+  background: var(--header-gradient);
+  transition: background 0.3s ease;
+  z-index: 0;
 }
-header h1 { font-size:3rem; font-weight:bold; margin-bottom:20px; text-transform:uppercase; }
-header p { font-size:1.3rem; max-width:600px; margin-bottom:40px; line-height:1.5; }
 
-.header-buttons { display:flex; flex-direction:column; gap:15px; }
-.btn { padding:15px 30px; font-size:1.1rem; background: var(--btn-bg); color: var(--btn-color); border:none; border-radius:8px; cursor:pointer; text-decoration:none; transition:0.3s; text-align:center; }
-.btn:hover { opacity:0.85; }
-.btn-apaitu { background: var(--btn-apaitu-bg); color: var(--btn-apaitu-color); }
+header h1 { font-size:2.4em; margin-bottom:10px; }
+header p { font-size:1.2em; color:gray; margin-bottom:20px; }
 
-.intro-shape { position:absolute; border-radius:50%; background: rgba(255,255,255,0.2); animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-30px);} }
+.floating-circle {
+  position:absolute;
+  border-radius:50%;
+  background: rgba(255,255,255,0.2);
+  opacity:0;
+  animation: popIn 1s forwards;
+}
 
-#midman-list { padding:50px 20px; max-width:800px; margin:0 auto; }
-#midman-list h2 { text-align:center; margin-bottom:20px; font-size:2rem; color:#4caf50; }
+@keyframes popIn {
+  0% { transform: scale(0); opacity:0; }
+  100% { transform: scale(1); opacity:1; }
+}
 
-.midman-card { display:flex; justify-content:space-between; align-items:center; background: var(--card-bg); padding:15px 20px; margin-bottom:15px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:0.3s; }
-.midman-info { display:flex; flex-direction:column; }
-.midman-info span { margin-bottom:5px; font-weight:bold; font-size:1.1rem; }
-.midman-info small { font-size:0.9rem; color:var(--card-text-color); }
+.btn { padding:12px 20px; margin:8px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; }
+.primary { background: var(--accent); color:white; }
+.secondary { background:#444; color:white; }
 
-.message-btn { padding:10px 20px; background:#25d366; color:white; text-decoration:none; border-radius:8px; font-weight:bold; }
+section { padding:40px 20px; max-width:900px; margin:auto; }
 
-.rules-box { 
-  background:#d1ecf1; 
-  border-left:5px solid #0c5460; 
-  padding:20px; 
-  margin-top:30px; 
-  border-radius:8px; 
-  font-weight:bold; 
+.box { background: var(--card); padding:16px; border-radius:10px; margin-bottom:16px; text-align:left; }
+
+.warning { background: var(--warning); color: var(--warning-text); font-weight:bold; }
+
+.midman-card {
+  background: var(--card);
+  padding:16px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+  flex-wrap: wrap;
+}
+
+.midman-info { margin-bottom:8px; }
+
+.message-btn { background: var(--accent); color:white; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:bold; }
+
+.dark-toggle {
+  position:fixed;
+  top:15px;
+  right:15px;
+  padding:10px 16px;
+  border-radius:50px;
+  border:none;
+  cursor:pointer;
+  background:#333;
+  color:white;
+  font-weight:bold;
+  z-index:9999; /* FRONT layer */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.dark-toggle-circle {
+  position:absolute;
+  width:0;
+  height:0;
+  border-radius:50%;
+  background:#fff;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  opacity:0.2;
+  z-index:0;
   transition:0.3s;
 }
 
-.rules-box ul { margin-top:10px; list-style: disc; padding-left:20px; }
+.wa-float {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background: var(--accent);
+  color:white;
+  padding:14px 16px;
+  border-radius:50%;
+  font-size:20px;
+  text-decoration:none;
+  z-index:999;
+}
 
-.info-section { padding:50px 20px; max-width:800px; margin:auto; }
-.info-section h2 { margin-top:30px; font-size:1.5rem; }
-.info-section p, .info-section li { line-height:1.7; font-size:1rem; }
-.info-section ol { margin-left:20px; margin-top:15px; }
-.warning { margin-top:20px; padding:15px; background:#fff3cd; border-left:5px solid #ffc107; font-weight:bold; transition:0.3s; }
-
-#visitor-counter { text-align:center; margin:30px 0; padding:15px; background:#4caf50; color:white; border-radius:10px; font-weight:bold; font-size:1.2rem; }
-
-.disclaimer { padding:30px 20px; background:#fff3cd; color:#856404; text-align:center; font-weight:bold; font-size:1.1rem; transition:0.3s; }
-
-.whatsapp-float { position:fixed; bottom:20px; right:20px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:2rem; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:100; }
-
-.dark-toggle { position:fixed; top:20px; right:20px; background:#333; color:white; padding:10px 15px; border-radius:8px; cursor:pointer; z-index:101; font-weight:bold; }
-
-[data-theme="dark"] .rules-box { background:#333; color:#f9f9f9; border-left:5px solid #4caf50; }
-[data-theme="dark"] .warning, 
-[data-theme="dark"] .disclaimer { background:#555c26; color:#f9f9f9; border-left:5px solid #ffb300; }
-
+footer { text-align:center; padding:20px; color:var(--text); }
 </style>
 </head>
 
 <body>
-
-<div class="dark-toggle" onclick="toggleDark()">🌙 Mod Gelap</div>
+<button class="dark-toggle" onclick="toggleDark()">
+  Mode Dark
+  <div class="dark-toggle-circle"></div>
+</button>
 
 <header>
-  <h1>Senarai Midman Trusted Malaysia</h1>
-  <p>Pusat komuniti untuk midman yang disahkan dan dipercayai di Malaysia. Hantar, semak dan gunakan midman dengan selamat!</p>
-  <div class="header-buttons">
-    <a href="#midman-list" class="btn">Lihat Senarai</a>
-    <a href="#midman-info" class="btn btn-apaitu">Apa Itu Midman?</a>
-  </div>
+<h1>Midman Trusted Malaysia</h1>
+<p>Senarai midman dipercayai untuk urusan jual beli</p>
 
-  <!-- floating circles -->
-  <div class="intro-shape" style="top:10%; left:20%; width:40px; height:40px;"></div>
-  <div class="intro-shape" style="top:50%; left:80%; width:60px; height:60px;"></div>
-  <div class="intro-shape" style="top:70%; left:40%; width:30px; height:30px;"></div>
+<!-- Floating circles that pop and stay -->
+<div class="floating-circle" style="top:10%; left:20%; width:40px; height:40px;"></div>
+<div class="floating-circle" style="top:50%; left:80%; width:60px; height:60px;"></div>
+<div class="floating-circle" style="top:70%; left:40%; width:30px; height:30px;"></div>
+<div class="floating-circle" style="top:30%; left:60%; width:50px; height:50px;"></div>
+
+<button class="btn primary" onclick="document.getElementById('list').scrollIntoView({behavior:'smooth'})">Lihat Senarai</button>
+<button class="btn secondary" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})">Apa Itu Midman?</button>
 </header>
 
-<section id="midman-list">
-  <h2>Senarai Midman Trusted Malaysia</h2>
+<section id="list">
+<h2>Senarai Midman Trusted Malaysia</h2>
 
-  <div class="midman-card">
-    <div class="midman-info">
-      <span>MannStore 🇲🇾 - Verified</span>
-      <small>Terima kasih telah menggunakan servis kami!</small>
-    </div>
-    <a href="https://wa.me/60142815551" target="_blank" class="message-btn">HANTAR PESAN</a>
-  </div>
+<div class="box">
+📌 <strong>Syarat masuk senarai:</strong><br>
+• Minimum 200+ feedback<br>
+• Yuran masuk senarai: RM5<br>
+• Verified selepas 2–5 feedback baharu
+</div>
 
-  <div class="midman-card">
-    <div class="midman-info">
-      <span>Kryzen Store 🇲🇾 - Verified</span>
-      <small>Terima kasih telah menggunakan servis kami!</small>
-    </div>
-    <a href="https://wa.me/60136734585" target="_blank" class="message-btn">HANTAR PESAN</a>
-  </div>
+<div class="midman-card">
+  <div class="midman-info"><strong>Mann Store 🇲🇾 (OWNER) - Verified</strong><br>Terima kasih telah menggunakan servis kami!</div>
+  <a href="https://wa.me/60142815551" target="_blank" class="message-btn">Message Kami!</a>
+</div>
 
-  <div class="midman-card">
-    <div class="midman-info">
-      <span>Milo Pagi 🇲🇾 - Verified</span>
-      <small>Terima kasih telah menggunakan servis kami!</small>
-    </div>
-    <a href="https://wa.me/60184035510" target="_blank" class="message-btn">HANTAR PESAN</a>
-  </div>
+<div class="midman-card">
+  <div class="midman-info"><strong>Kryzen Store 🇲🇾 - Verified</strong><br>Terima kasih telah menggunakan servis kami!</div>
+  <a href="https://wa.me/60136734585" target="_blank" class="message-btn">Message Kami!</a>
+</div>
 
-  <div class="midman-card">
-    <div class="midman-info">
-      <span>Milo Malam 🇲🇾 - Verified</span>
-      <small>Terima kasih telah menggunakan servis kami!</small>
-    </div>
-    <a href="https://wa.me/60187905510" target="_blank" class="message-btn">HANTAR PESAN</a>
-  </div>
+<div class="midman-card">
+  <div class="midman-info"><strong>Milo Pagi 🇲🇾 - Verified</strong><br>Terima kasih telah menggunakan servis kami!</div>
+  <a href="https://wa.me/60184035510" target="_blank" class="message-btn">Message Kami!</a>
+</div>
 
-  <div class="rules-box">
-    📌 Peraturan untuk menjadi Trusted Midman:
-    <ul>
-      <li>Minimum 200+ maklum balas yang disahkan</li>
-      <li>Yuran pengesahan RM5</li>
-      <li>Hanya midman sebenar diterima</li>
-    </ul>
-    ⚠️ Semua transaksi adalah atas risiko sendiri
-  </div>
+<div class="midman-card">
+  <div class="midman-info"><strong>Milo Malam 🇲🇾 - Verified</strong><br>Terima kasih telah menggunakan servis kami!</div>
+  <a href="https://wa.me/60187905510" target="_blank" class="message-btn">Message Kami!</a>
+</div>
+
+<div class="midman-card">
+  <div class="midman-info"><strong>Keriz Store 🇲🇾 - Unverified</strong><br>Terima kasih telah menggunakan servis kami!</div>
+  <a href="https://wa.me/60168231397" target="_blank" class="message-btn">Message Kami!</a>
+</div>
 </section>
 
-<section id="midman-info" class="info-section">
-  <h2>Apa Itu Midman? 🤝</h2>
-  <p>Midman ialah pihak ketiga yang dipercayai untuk memegang barangan atau wang semasa transaksi antara pembeli dan penjual. Tujuannya adalah untuk mengelakkan penipuan (scam).</p>
+<section id="guide">
+<div class="box">
+<h3>Apa Itu Midman?</h3>
+<p>Midman ialah orang tengah yang membantu memastikan transaksi lebih selamat antara buyer dan seller.</p>
+</div>
 
-  <h2>Cara Guna Midman 📝</h2>
-  <ol>
-    <li>Pembeli & Penjual bersetuju untuk guna midman</li>
-    <li>Pembeli hantar bayaran kepada midman</li>
-    <li>Penjual serahkan item / akaun kepada pembeli</li>
-    <li>Pembeli sahkan item diterima & berfungsi</li>
-    <li>Midman lepaskan bayaran kepada penjual</li>
-  </ol>
+<div class="box">
+<h3>Cara Guna Midman 📝</h3>
+<ol style="margin-left:20px;">
+<li>Pembeli & Penjual bersetuju untuk guna midman</li>
+<li>Pembeli hantar bayaran kepada midman</li>
+<li>Penjual serahkan item / akaun kepada pembeli</li>
+<li>Pembeli sahkan item diterima & berfungsi</li>
+<li>Midman lepaskan bayaran kepada penjual</li>
+</ol>
+</div>
 
-  <p class="warning">⚠️ Gunakan midman atas risiko sendiri. Sentiasa semak maklum balas dan bukti sebelum transaksi.</p>
+<div class="box warning">⚠️ Gunakan midman dengan risiko sendiri</div>
+<div class="box warning">✅ Semua midman dalam senarai ini telah melalui semakan asas</div>
 </section>
 
-<!-- visitor counter -->
-<div id="visitor-counter">Jumlah Pelawat Website: <span id="count">...</span></div>
-
-<div class="disclaimer">⚠️ Semua midman disahkan oleh komuniti. Gunakan atas risiko sendiri.</div>
-
-<a href="https://wa.me/60142815551" target="_blank" class="whatsapp-float" title="Soalan? Hantar nombor anda di sini!">
-  <i class="fab fa-whatsapp"></i>
-</a>
+<footer>MannStore website MY 2026</footer>
+<a class="wa-float" href="https://wa.me/60142815551" target="_blank">💬</a>
 
 <script>
-document.querySelectorAll('.btn').forEach(btn => {
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
 function toggleDark(){
   const body = document.body;
-  if(body.getAttribute('data-theme') === 'dark'){
-    body.removeAttribute('data-theme');
-  } else {
-    body.setAttribute('data-theme','dark');
-  }
+  const circle = document.querySelector('.dark-toggle-circle');
+  
+  // pop animation
+  circle.style.width = '3000px';
+  circle.style.height = '3000px';
+  circle.style.transition = '0.5s ease';
+  
+  setTimeout(() => {
+    body.classList.toggle("dark");
+    circle.style.width = '0';
+    circle.style.height = '0';
+  }, 250);
 }
-
-// visitor counter using your working API
-fetch('https://api.counterapi.dev/v2/mannstore-mys-team-3003/visitorcounter')
-  .then(res => res.json())
-  .then(res => {
-    document.getElementById('count').innerText = res.value;
-  })
-  .catch(err => {
-    document.getElementById('count').innerText = "Error";
-  });
 </script>
-
 </body>
 </html>
