@@ -149,7 +149,6 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);font-weight:700}
       </ul>
     </div>
 
-    <!-- verified cards (hover effect on cards; buttons CLEAN no hover) -->
     <div class="midman-card">
       <div class="midman-info">
         <strong>Mann Store 🇲🇾 (OWNER) - Verified</strong>
@@ -228,7 +227,6 @@ footer{text-align:center;padding:28px 18px;color:var(--muted);font-weight:700}
 <a class="wa-float" href="https://wa.me/60142815551" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-// smooth scroll for header buttons
 document.querySelectorAll('.header-buttons a').forEach(btn=>{
   btn.addEventListener('click', e=>{
     e.preventDefault();
@@ -238,12 +236,11 @@ document.querySelectorAll('.header-buttons a').forEach(btn=>{
   });
 });
 
-// dark mode toggle
 function toggleDark(){
   document.body.classList.toggle('dark');
 }
 
-// money-symbol visual (subtle, non-intrusive)
+// money-symbol visual (subtle)
 const symbols = ["$", "€", "£", "₱", "¥", "¢"];
 for(let i=0;i<18;i++){
   const s = document.createElement('div');
