@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Midman Trusted Malaysia | Gold Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
@@ -19,6 +20,7 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
 
@@ -37,9 +39,12 @@
         }
 
         #intro-text {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
+            font-family: 'Montserrat', sans-serif; /* CUSTOM FONT */
+            text-transform: uppercase; /* CAPS LOCK */
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-weight: 900;
             text-align: center;
+            letter-spacing: 2px;
             background: linear-gradient(to bottom, #fff, var(--accent-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -53,15 +58,15 @@
             position: absolute;
             bottom: 30px;
             color: rgba(255,255,255,0.3);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .show-text { opacity: 1 !important; transform: translateY(0) !important; }
         .hide-intro { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
-        /* --- MAIN CONTENT --- */
+        /* --- MAIN SITE --- */
         #main-site { opacity: 0; transition: opacity 1.5s ease; }
         .reveal-site { opacity: 1 !important; }
 
@@ -94,10 +99,20 @@
         }
 
         header { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
-        header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; background: linear-gradient(to bottom, #fff 40%, var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        header h1 { 
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            font-weight: 800; 
+            background: linear-gradient(to bottom, #fff 40%, var(--accent-gold)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 15px; 
+            line-height: 1.1;
+        }
         
         main { max-width: 1000px; margin: 0 auto; padding: 20px 20px 60px 20px; }
-        .section-title { font-size: 2.2rem; margin-bottom: 12px; text-align: center; background: linear-gradient(180deg, #fff 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-title { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 12px; text-align: center; background: linear-gradient(180deg, #fff 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 50px; }
 
         .midman-list { display: grid; gap: 18px; }
@@ -132,23 +147,23 @@
 <body>
 
 <div id="intro-overlay">
-    <div id="intro-text">Hello</div>
-    <div class="skip-hint">Double click to skip</div>
+    <div id="intro-text">HELLO</div>
+    <div class="skip-hint">DOUBLE CLICK TO SKIP</div>
 </div>
 
 <div id="main-site">
     <header>
-        <h1>Midman Trusted<br>Malaysia Lists</h1>
+        <h1>MIDMAN TRUSTED<br>MALAYSIA LISTS</h1>
         <div style="color: var(--text-muted); margin-bottom: 40px; max-width: 600px;">Direktori eksklusif untuk urusan jual beli digital yang selamat dan dijamin amanah.</div>
         <div style="display: flex; gap: 15px;">
-            <a class="btn primary" href="#list">Lihat list</a>
-            <a class="btn" href="#guide">Cara guna midman</a>
+            <a class="btn primary" href="#list">LIHAT LIST</a>
+            <a class="btn" href="#guide">CARA GUNA MIDMAN</a>
         </div>
     </header>
 
     <main>
         <section id="list">
-            <h2 class="section-title">Midman Lists</h2>
+            <h2 class="section-title">MIDMAN LISTS</h2>
             <div class="section-sub">Semua Midman di bawah mempunyai rekod bersih dan reputasi tinggi.</div>
 
             <div class="midman-list">
@@ -159,7 +174,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60142815551" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Mid Rul 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -167,7 +181,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60194565345" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Kryzen Store 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -175,7 +188,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60162531397" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Keriz Store 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -183,7 +195,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60162531397" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Mid Ipanzz 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -191,7 +202,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60175970694" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Mid Damz 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -199,7 +209,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/601133169293" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Yanz Store 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -207,7 +216,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/601133468572" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Skyy Reseller 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -215,7 +223,6 @@
                     </div>
                     <a class="message-btn" href="https://wa.me/60169357363" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
-
                 <div class="glass-panel midman-card">
                     <div class="midman-info">
                         <strong>Zex Store 🇲🇾 <i class="fas fa-circle-check verified-badge"></i></strong>
@@ -227,12 +234,12 @@
         </section>
 
         <section id="guide" style="margin-top: 80px; padding: 40px;" class="glass-panel">
-            <h2 style="color:var(--accent-gold); margin-bottom: 25px; text-align: center;">Cara guna midman</h2>
+            <h2 style="color:var(--accent-gold); margin-bottom: 25px; text-align: center; font-family: 'Montserrat', sans-serif;">CARA GUNA MIDMAN 👑</h2>
             <div style="color:var(--text-main); line-height: 2.2; font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto;">
                 • Pembeli menyerahkan duit kepada midman.<br>
                 • Setelah midman menerima duit tersebut, penjual akan memberikan item yang dibeli kepada pembeli.<br>
                 • Selepas pembeli menerima item yang dibeli, midman akan menyerahkan duit kepada penjual.<br>
-                <strong style="color:var(--accent-gold); display: block; margin-top: 15px; font-size: 1.4rem;">Selesai.</strong>
+                <strong style="color:var(--accent-gold); display: block; margin-top: 15px; font-size: 1.4rem;">SELESAI.</strong>
             </div>
         </section>
     </main>
@@ -249,50 +256,40 @@
     let introSkipped = false;
 
     const sequence = [
-        { text: "Hello", delay: 2000 },
-        { text: "Mencari midman trusted malaysia?", delay: 2000 },
-        { text: "Kamu berada di tempat yang tepat!", delay: 2000 }
+        { text: "HELLO", delay: 2000 },
+        { text: "MENCARI MIDMAN TRUSTED MALAYSIA?", delay: 2000 },
+        { text: "KAMU BERADA DI TEMPAT YANG TEPAT!", delay: 2000 }
     ];
 
     function finishIntro() {
         if (introSkipped) return;
         introSkipped = true;
-        
         introOverlay.classList.add('hide-intro');
         mainSite.classList.add('reveal-site');
-        
         setTimeout(() => {
             document.body.style.overflow = 'auto';
             introOverlay.style.display = 'none';
         }, 1000);
     }
 
-    // Double click to skip
     introOverlay.addEventListener('dblclick', finishIntro);
 
     async function runIntro() {
         document.body.style.overflow = 'hidden';
-
         for (let i = 0; i < sequence.length; i++) {
             if (introSkipped) break;
-            
             introText.innerText = sequence[i].text;
             introText.classList.add('show-text');
-            
             await new Promise(res => setTimeout(res, sequence[i].delay));
-            
             if (introSkipped) break;
-
             if (i < sequence.length - 1) {
                 introText.classList.remove('show-text');
                 await new Promise(res => setTimeout(res, 600)); 
             }
         }
-
         if (!introSkipped) finishIntro();
     }
 
-    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
